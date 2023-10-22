@@ -91,42 +91,42 @@ namespace TodoSynchronizer.Core.Helpers
         public static string GetSubmissionDesc(Assignment assignment, AssignmentSubmission submission)
         {
             if (submission.SubmittedAt != null)
-                return $"已提交（提交时间：{submission.SubmittedAt.Value.AddHours(8).ToString("yyyy-MM-dd HH:mm:ss")}）";
+                return $"Submitted at {submission.SubmittedAt.Value.AddHours(8).ToString("yyyy-MM-dd HH:mm:ss")}";
             else
-                return "未提交";
+                return "Not Submitted";
         }
 
         public static string GetSubmissionComment(SubmissionComment comment)
         {
-            return $"{comment.AuthorName} 评论：{comment.Comment}";
+            return $"{comment.AuthorName}: {comment.Comment}";
         }
 
         public static string GetGradeDesc(Assignment assignment, AssignmentSubmission submission)
         {
             if (submission.Grade != null)
-                return $"已评分：{submission.Grade}/{assignment.PointsPossible??0}（评分时间：{submission.GradedAt.Value.AddHours(8).ToString("yyyy-MM-dd HH:mm:ss")}）";
+                return $"{submission.Grade}/{assignment.PointsPossible??0}. Graded at {submission.GradedAt.Value.AddHours(8).ToString("yyyy-MM-dd HH:mm:ss")}";
             else
-                return "未评分";
+                return "Not Graded";
         }
 
         public static string GetSubmissionDesc(Assignment assignment, QuizSubmission submission)
         {
             if (submission.WorkflowState == "untaken")
-                return $"正在进行测验（开始时间：{submission.StartedAt.Value.AddHours(8).ToString("yyyy-MM-dd HH:mm:ss")}）";
+                return $"Attempt beginning at {submission.StartedAt.Value.AddHours(8).ToString("yyyy-MM-dd HH:mm:ss")}";
             else if (submission.WorkflowState == "complete")
-                return $"尝试 {submission.Attempt}：{submission.Score}/{submission.QuizPointsPossible}（提交时间：{submission.FinishedAt.Value.AddHours(8).ToString("yyyy-MM-dd HH:mm:ss")}）";
+                return $"Attempt {submission.Attempt}: {submission.Score}/{submission.QuizPointsPossible}. Submitted at {submission.FinishedAt.Value.AddHours(8).ToString("yyyy-MM-dd HH:mm:ss")}";
             else if (submission.WorkflowState == "pending_review")
-                return $"尝试 {submission.Attempt}：{submission.Score}/{submission.QuizPointsPossible}（提交时间：{submission.FinishedAt.Value.AddHours(8).ToString("yyyy-MM-dd HH:mm:ss")}）（*有些问题尚未计分）";
+                return $"Attempt {submission.Attempt}: {submission.Score}/{submission.QuizPointsPossible} (Partial Score). Submitted at {submission.FinishedAt.Value.AddHours(8).ToString("yyyy-MM-dd HH:mm:ss")}";
             else
-                return $"无法识别的尝试";
+                return $"Unrecognized attempt";
         }
 
         public static string GetItemName(this ICanvasItem item)
         {
-            if (item is Quiz quiz) return "测验";
-            if (item is Assignment assignment) return "作业";
-            if (item is Anouncement anouncement) return "公告";
-            if (item is Discussion discussion) return "讨论";
+            if (item is Quiz quiz) return "Quiz";
+            if (item is Assignment assignment) return "Assignment";
+            if (item is Anouncement anouncement) return "Announcement";
+            if (item is Discussion discussion) return "Discussion";
             return null;
         }
     }
