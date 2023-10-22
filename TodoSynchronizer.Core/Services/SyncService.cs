@@ -881,7 +881,7 @@ namespace TodoSynchronizer.Core.Services
                         var isabsolute = Uri.TryCreate(file.Url, UriKind.Absolute, out fulluri);
                         if (!isabsolute)
                         {
-                            var urires = Uri.TryCreate(new Uri("https://oc.sjtu.edu.cn"), file.Url, out fulluri);
+                            var urires = Uri.TryCreate(new Uri("https://canvas.ucsd.edu"), file.Url, out fulluri);
                             if (!urires)
                                 throw new Exception($"Uri无效：{file.Url}");
                         }

@@ -5,14 +5,14 @@
 # 可选值: Category | Course
 # Category 表示按项目种类创建列表
 # Course 表示按课程创建列表
-ListNameMode : Category
+ListNameMode : Course
 # 若 ListNameMode 为 Course，则可指定创建 Todo 列表的模板
 # 可用的替换参数：
 # {course.name} -> 课程名
 # {course.coursecode} -> 课程代码（e.g.本-(2021-2022-2)-PHY1251-6-大学物理(A类）（1））
 # {course.coursecodeshort} -> 简化的课程代码（e.g.PHY1251）
 # {course.originalname} -> 原始课程名（你可以在 Canvas 上随意修改课程名，但改不掉原始课程名）
-ListNameTemplateForCourse : "Canvas - {course.name}"
+ListNameTemplateForCourse : "{course.name}"
 # Canvas 全局通知的 Todo 列表名称
 ListNameForNotification : "Canvas 通知"
 # 若 ListNameMode 为 Category，则可指定创建 Todo 列表的名称
@@ -23,7 +23,7 @@ ListNamesForCategory :
   AnouncementListName : "Canvas 公告"
 # 不处理 14 天前过期的项目
 # 如果你是在学期中开始使用本程序，建议设置为 true
-IgnoreTooOldItems : false
+IgnoreTooOldItems : true
 # 遇到错误，程序退出仍返回 0
 # 如果程序总是遇到完全可以忽略的错误，可以设置为 true，防止 GitHub 的邮件轰炸
 # 注：如果附件上传失败，无论 IgnoreErrors 为何值，程序都不会认为遇到了错误
@@ -80,7 +80,7 @@ AnouncementConfig :
   # {course.originalname} -> 原始课程名
   # {anouncement.title} -> 公告标题
   # {anouncement.author} -> 公告发布者
-  TitleTemplate : "{course.name} - {anouncement.title}"
+  TitleTemplate : "{anouncement.title}"
   # 指定待办事项的重要性：true 为重要
   SetImportance : false
   # 指定延后提醒的时间间隔（此选项对滴答清单无效）
@@ -126,7 +126,7 @@ AssignmentConfig :
   # {course.coursecodeshort} -> 简化的课程代码
   # {course.originalname} -> 原始课程名
   # {assignment.title} -> 作业标题
-  TitleTemplate : "{course.name} - {assignment.title}"
+  TitleTemplate : "{assignment.title}"
   SetImportance : false
   # 指定待办事项过期时间的来源
   # 可选值: due_at | lock_at
@@ -183,7 +183,7 @@ QuizConfig :
   # {course.coursecodeshort} -> 简化的课程代码
   # {course.originalname} -> 原始课程名
   # {quiz.title} -> 测验标题
-  TitleTemplate : "{course.name} - {quiz.title}"
+  TitleTemplate : "{quiz.title}"
   SetImportance : false
   # 指定待办事项过期时间的来源
   # 同 Assignment 的配置
@@ -224,13 +224,13 @@ DiscussionConfig :
   # {course.coursecodeshort} -> 简化的课程代码
   # {course.originalname} -> 原始课程名
   # {discussion.title} -> 讨论标题
-  TitleTemplate : "{course.name} - {discussion.title}"
+  TitleTemplate : "{discussion.title}"
   SetImportance : false
   # （此选项对滴答清单无效）
   RemindAfter : 00:05:00.00
 NotificationConfig : 
   # 是否将全局通知（控制面板顶部出现的横幅）同步到 Todo
-  Enabled : true
+  Enabled : false
   CreateContent : true
   CreateDueDate : true
   CreateRemind : true
