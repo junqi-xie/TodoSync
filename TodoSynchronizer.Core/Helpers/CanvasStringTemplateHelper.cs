@@ -90,8 +90,9 @@ namespace TodoSynchronizer.Core.Helpers
 
         public static string GetSubmissionDesc(Assignment assignment, AssignmentSubmission submission)
         {
+            var timeZone = TimeZoneInfo.FindSystemTimeZoneById(SyncConfig.Default.TimeZone);
             if (submission.SubmittedAt != null)
-                return $"Submitted at {submission.SubmittedAt.Value.AddHours(8).ToString("yyyy-MM-dd HH:mm:ss")}";
+                return $"Submitted at {TimeZoneInfo.ConvertTime(submission.SubmittedAt.Value, timeZone).ToString("yyyy-MM-dd HH:mm:ss")}";
             else
                 return "Not Submitted";
         }
@@ -103,20 +104,22 @@ namespace TodoSynchronizer.Core.Helpers
 
         public static string GetGradeDesc(Assignment assignment, AssignmentSubmission submission)
         {
+            var timeZone = TimeZoneInfo.FindSystemTimeZoneById(SyncConfig.Default.TimeZone);
             if (submission.Grade != null)
-                return $"{submission.Grade}/{assignment.PointsPossible??0}. Graded at {submission.GradedAt.Value.AddHours(8).ToString("yyyy-MM-dd HH:mm:ss")}";
+                return $"{submission.Grade}/{assignment.PointsPossible??0}. Graded at {TimeZoneInfo.ConvertTime(submission.GradedAt.Value, timeZone).ToString("yyyy-MM-dd HH:mm:ss")}";
             else
                 return "Not Graded";
         }
 
         public static string GetSubmissionDesc(Assignment assignment, QuizSubmission submission)
         {
+            var timeZone = TimeZoneInfo.FindSystemTimeZoneById(SyncConfig.Default.TimeZone);
             if (submission.WorkflowState == "untaken")
-                return $"Attempt beginning at {submission.StartedAt.Value.AddHours(8).ToString("yyyy-MM-dd HH:mm:ss")}";
+                return $"Attempt beginning at {TimeZoneInfo.ConvertTime(submission.StartedAt.Value, timeZone).ToString("yyyy-MM-dd HH:mm:ss")}";
             else if (submission.WorkflowState == "complete")
-                return $"Attempt {submission.Attempt}: {submission.Score}/{submission.QuizPointsPossible}. Submitted at {submission.FinishedAt.Value.AddHours(8).ToString("yyyy-MM-dd HH:mm:ss")}";
+                return $"Attempt {submission.Attempt}: {submission.Score}/{submission.QuizPointsPossible}. Submitted at {TimeZoneInfo.ConvertTime(submission.FinishedAt.Value, timeZone).ToString("yyyy-MM-dd HH:mm:ss")}";
             else if (submission.WorkflowState == "pending_review")
-                return $"Attempt {submission.Attempt}: {submission.Score}/{submission.QuizPointsPossible} (Partial Score). Submitted at {submission.FinishedAt.Value.AddHours(8).ToString("yyyy-MM-dd HH:mm:ss")}";
+                return $"Attempt {submission.Attempt}: {submission.Score}/{submission.QuizPointsPossible} (Partial Score). Submitted at {TimeZoneInfo.ConvertTime(submission.FinishedAt.Value, timeZone).ToString("yyyy-MM-dd HH:mm:ss")}";
             else
                 return $"Unrecognized attempt";
         }

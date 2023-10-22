@@ -13,6 +13,7 @@ namespace TodoSynchronizer.Core.Config
         public static SyncConfig Default { get; set; }
         //List Names
         public ListNameMode ListNameMode { get; set; }
+        public string TimeZone { get; set; }
         public string[] IgnoreCourseNames { get; set; }
         public ListNamesForCategory ListNamesForCategory { get; set; }
         public string ListNameTemplateForCourse { get; set; }
