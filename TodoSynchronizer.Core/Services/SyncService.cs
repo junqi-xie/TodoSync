@@ -822,10 +822,11 @@ namespace TodoSynchronizer.Core.Services
                 var duetime = CanvasPreference.GetDueTime(item);
                 if (duetime.HasValue)
                 {
-                    var date = duetime.Value.ToUniversalTime().Date.ToString("yyyy-MM-ddTHH:mm:ss.fffffff", System.Globalization.CultureInfo.InvariantCulture);
+                    var duetimeT = duetime.Value.AddHours(-15);
+                    var date = duetimeT.Date.ToString("yyyy-MM-ddTHH:mm:ss.fffffff", System.Globalization.CultureInfo.InvariantCulture);
                     if (todoTaskOld == null || todoTaskOld.DueDateTime == null || date != todoTaskOld.DueDateTime.DateTime)
                     {
-                        todoTaskNew.DueDateTime = DateTimeTimeZone.FromDateTime(duetime.Value);
+                        todoTaskNew.DueDateTime = DateTimeTimeZone.FromDateTime(duetimeT);
                         modified = true;
                     }
                 }
@@ -842,10 +843,11 @@ namespace TodoSynchronizer.Core.Services
                 var remindtime = CanvasPreference.GetRemindTime(item);
                 if (remindtime.HasValue)
                 {
-                    var date = remindtime.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffffff", System.Globalization.CultureInfo.InvariantCulture);
+                    var remindtimeT = remindtime.Value.AddHours(-15);
+                    var date = remindtimeT.ToString("yyyy-MM-ddTHH:mm:ss.fffffff", System.Globalization.CultureInfo.InvariantCulture);
                     if (todoTaskOld == null || todoTaskOld.IsReminderOn == false || todoTaskOld.ReminderDateTime == null || date != todoTaskOld.ReminderDateTime.DateTime)
                     {
-                        todoTaskNew.ReminderDateTime = DateTimeTimeZone.FromDateTime(remindtime.Value);
+                        todoTaskNew.ReminderDateTime = DateTimeTimeZone.FromDateTime(remindtimeT);
                         todoTaskNew.IsReminderOn = true;
                         modified = true;
                     }
