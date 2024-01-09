@@ -38,6 +38,7 @@ IgnoreCourseNames:
 - "New Graduate Student Orientation [ORG AY2324]"
 - "iTriton Orientation [ORG AY2324]"
 - "Preparing for Success: Online Course for Instructional Assistants [AY2324]"
+- "Growing with Canvas for Instructors and Teaching Assistants"
 VerboseMode : true
 # Canvas 公告 配置
 AnouncementConfig : 
