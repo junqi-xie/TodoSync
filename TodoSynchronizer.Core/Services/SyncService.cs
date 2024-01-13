@@ -822,7 +822,7 @@ namespace TodoSynchronizer.Core.Services
                 var duetime = CanvasPreference.GetDueTime(item);
                 if (duetime.HasValue)
                 {
-                    var duetimeT = duetime.Value.AddHours(-15);
+                    var duetimeT = duetime.Value.AddHours(-16);
                     var date = duetimeT.Date.ToString("yyyy-MM-ddTHH:mm:ss.fffffff", System.Globalization.CultureInfo.InvariantCulture);
                     if (todoTaskOld == null || todoTaskOld.DueDateTime == null || date != todoTaskOld.DueDateTime.DateTime)
                     {
@@ -843,7 +843,7 @@ namespace TodoSynchronizer.Core.Services
                 var remindtime = CanvasPreference.GetRemindTime(item);
                 if (remindtime.HasValue)
                 {
-                    var remindtimeT = remindtime.Value.AddHours(-15);
+                    var remindtimeT = remindtime.Value.AddHours(-16);
                     var date = remindtimeT.ToString("yyyy-MM-ddTHH:mm:ss.fffffff", System.Globalization.CultureInfo.InvariantCulture);
                     if (todoTaskOld == null || todoTaskOld.IsReminderOn == false || todoTaskOld.ReminderDateTime == null || date != todoTaskOld.ReminderDateTime.DateTime)
                     {
