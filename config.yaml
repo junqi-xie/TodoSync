@@ -34,11 +34,9 @@ IgnoreErrors : false
 # 若为 true，输出“处理课程 高等数学 作业 第一章作业”
 # 若为 false，输出“处理课程 1 作业 3”
 IgnoreCourseNames:
-- "Integrity Tutorial - Cohort 6 [AY2324]"
-- "New Graduate Student Orientation [ORG AY2324]"
-- "iTriton Orientation [ORG AY2324]"
 - "Preparing for Success: Online Course for Instructional Assistants [AY2324]"
 - "Growing with Canvas for Instructors and Teaching Assistants"
+- "Copyright Violation Presentation [ORG AY2425]"
 VerboseMode : true
 # Canvas 公告 配置
 AnouncementConfig : 
