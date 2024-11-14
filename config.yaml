@@ -1,7 +1,7 @@
 # 这是 TodoSynchronizer 的配置文件
 # 注意：修改配置请严格遵循格式；请勿删除字段，否则程序可能无法正常运行。
 # ———————————————————————————————————————————
-TimeZone: Pacific Daylight Time
+TimeZone: Alaskan Standard Time
 # 同步 Todo 列表的模式
 # 可选值: Category | Course
 # Category 表示按项目种类创建列表
